@@ -59,6 +59,7 @@ Give an information stream which display informations printed on `stderr` by the
 * @JiaJian *(for Windows support)*
 * @guileen *(for OSX support)*
 * @jrf0110
+* @hanseartic *(events)*
 
 
 ## LICENSE
@@ -85,3 +86,6 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Change log
+[CHANGELOG.md](CHANGELOG.md)
