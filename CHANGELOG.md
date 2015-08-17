@@ -14,6 +14,8 @@ All notable changes to this project will be documented in this file.
 - events
 
 ### Changed
+- updated example in [README.md](README.md) to show events and the new way to initialize
+
 ### Deprecated
 ### Removed
 ### Fixed

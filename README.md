@@ -23,13 +23,34 @@ This library need
 
 A simple example which capture sound and redirect it to stdout.
 
-    var mic = require('microphone');
+    var Mircophone = require('microphone');
+    var mic = new Microphone();
+    
+    mic.on.('audio', function(audioData) {
+        // just dump the recorded buffer-data to stdout
+        processs.stdout.write(audioData.buffer);
+        // audioData has another field
+        //   audioData.stream
+        // as well
+    });
+    
+    mic.on('info', function(infoData) {
+        process.stdout.write(infoData);
+    });
+    
+    mic.on('audio-started', function(audioStream) {
+        // you can do something with the audio-stream here (e.g. start streaming to clients)
+        // it is the same, as mic.audioStream, btw
+    });
+    
+    mic.on('audio-stopped', function() {
+        // just tells you, that
+        //   mic.stopCapture();
+        // was called from somewhere
+    });
     
     mic.startCapture();
     
-    mic.audioStream.on('data', function(data) {
-        process.stdout.write(data);
-    });
 
 ## API
 
