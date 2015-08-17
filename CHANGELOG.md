@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - change log file
 - events
+- alsa- and SoX devices and encoding options to startCapture(options)
 
 ### Changed
 - updated example in [README.md](README.md) to show events and the new way to initialize
