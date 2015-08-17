@@ -1,7 +1,7 @@
 ## Information
 
 <table>
-<tr> 
+<tr>
 <td>Package</td><td>microphone</td>
 </tr>
 <tr>
@@ -23,13 +23,34 @@ This library need
 
 A simple example which capture sound and redirect it to stdout.
 
-    var mic = require('microphone');
+    var Mircophone = require('microphone');
+    var mic = new Microphone();
+
+    mic.on.('audio', function(audioData) {
+        // just dump the recorded buffer-data to stdout
+        processs.stdout.write(audioData.buffer);
+        // audioData has another field
+        //   audioData.stream
+        // as well
+    });
+
+    mic.on('info', function(infoData) {
+        process.stdout.write(infoData);
+    });
+    
+    mic.on('audio-started', function(audioStream) {
+        // you can do something with the audio-stream here (e.g. start streaming to clients)
+        // it is the same, as mic.audioStream, btw
+    });
+    
+    mic.on('audio-stopped', function() {
+        // just tells you, that
+        //   mic.stopCapture();
+        // was called from somewhere
+    });
     
     mic.startCapture();
     
-    mic.audioStream.on('data', function(data) {
-        process.stdout.write(data);
-    });
 
 ## API
 
@@ -37,14 +58,24 @@ A simple example which capture sound and redirect it to stdout.
 
 Start the process and pipe the stdout of ALSA `arecord` tool to audioStream
 
-By default, the outputing sound are PCM WAVE format, if you want a MP3 format 
-pass `true` as `mp3Output` in the options passed in arguments. 
+By default, the outputing sound are PCM WAVE format, if you want a MP3 format
+pass `true` as `mp3Output` in the options passed in arguments.
 
 (Example : `mic.startCapture({'mp3output' : true});`)
 
+Other optional parameters in the options object include:
+* alsa_format - ALSA format to use for capture (Example: 'S16_LE' See arecord --help for a list of recognized formats)
+* alsa_device - ALSA device to capture from (Example: 'hw:1,0')
+* alsa_addn_args - Additional arguements for ALSA (Example: ['--rate', '16000'])
+* sox_format - SoX format to use for capture (Example: 'dat')
+* sox_addn_args - Additional arguements for SoX (Example: ['arg1', 'arg2'])
+* mp3_channels - Number of channels for the MP3 Encoder (Example: 2)
+* mp3_bitDepth - Bit Depth for the MP3 Encoder (Example: 16)
+* mp3_sampleRate - Sample Rate for the MP3 Encoder (Example: 44100)
+
 #### stopCapture();
 
-Stop the process 
+Stop the process
 
 #### audioStream
 
@@ -59,6 +90,7 @@ Give an information stream which display informations printed on `stderr` by the
 * @JiaJian *(for Windows support)*
 * @guileen *(for OSX support)*
 * @jrf0110
+* @hanseartic *(events)*
 
 
 ## LICENSE
@@ -85,3 +117,6 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Change log
+[CHANGELOG.md](CHANGELOG.md)

@@ -1,19 +1,31 @@
 {
   "name": "microphone",
   "description": "microphone is a simple module that use `arecord` ALSA tools method to capture sound from a USB Microphone",
-  "version": "1.0.8",
-  "author": "Vincent Saluzzo",
+  "version": "2.0.0",
+  "author": "Paul Schütte",
   "contributors": [
+    {
+      "name": "Vincent Saluzzo",
+      "email": "vincentsaluzzo@me.com"
+    },
+    {
+      "name": "Winston Milling",
+      "email": "WRMilling@gmail.com"
+    },
     {
       "name": "JiaJian",
       "email": "its@jiajian.me"
+    },
+    {
+      "name": "Paul Schütte",
+      "email": "schuette.paul@gmail.com"
     }
   ],
   "dependencies": {
     "lame": "1.0.3"
   },
   "devDependencies": {},
-  "homepage": "http://github.com/vincentsaluzzo/node-microphone",
+  "homepage": "http://github.com/hanseartic/node-microphone",
   "keywords": [
     "microphone",
     "alsa",
@@ -24,7 +36,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/vincentsaluzzo/node-microphone.git"
+    "url": "https://github.com/hanseartic/node-microphone.git"
   },
-  "bugs": "http://github.com/vincentsaluzzo/node-microphone/issues"
+  "bugs": "http://github.com/hanseartic/node-microphone/issues"
 }
